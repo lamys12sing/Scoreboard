@@ -14,6 +14,8 @@
         android:textSize="40sp"
         app:layout_constrainedHeight="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,6 +31,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/button_min_round"
         app:layout_constraintEnd_toStartOf="@id/button_min_round"
         app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/button_min_round"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timer" />
 
@@ -40,6 +44,8 @@
         android:text="-"
         app:layout_constraintEnd_toStartOf="@+id/textView_round"
         app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/textView_title_A"
+        app:layout_constraintRight_toLeftOf="@id/textView_round"
         app:layout_constraintStart_toEndOf="@+id/textView_title_A"
         app:layout_constraintTop_toBottomOf="@+id/timer" />
 
@@ -55,6 +61,8 @@
         app:layout_constraintBaseline_toBaselineOf="@id/textView_title_B"
         app:layout_constraintEnd_toStartOf="@+id/button_add_round"
         app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/button_min_round"
+        app:layout_constraintRight_toLeftOf="@id/button_add_round"
         app:layout_constraintStart_toEndOf="@+id/button_min_round"
         app:layout_constraintTop_toBottomOf="@+id/timer" />
 
@@ -64,6 +72,8 @@
         android:text="@string/round"
         android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_round" />
 
@@ -75,6 +85,8 @@
         android:text="+"
         app:layout_constraintEnd_toStartOf="@+id/textView_title_B"
         app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/textView_round"
+        app:layout_constraintRight_toLeftOf="@id/textView_title_B"
         app:layout_constraintStart_toEndOf="@id/textView_round"
         app:layout_constraintTop_toBottomOf="@+id/timer" />
 
@@ -90,6 +102,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/button_add_round"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toRightOf="@id/button_add_round"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@id/button_add_round"
         app:layout_constraintTop_toBottomOf="@+id/timer" />
 
@@ -100,6 +114,8 @@
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_reset_score"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_reset_score"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,6 +126,8 @@
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/button_reset_score"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_reset_score"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -121,9 +139,8 @@
         android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/timer" />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
