@@ -22,90 +22,80 @@
     <TextView
         android:id="@+id/textView_title_A"
         style="@style/team_title"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:clickable="true"
         android:text="Team A"
         android:textColor="@color/teamA"
-        app:layout_constraintBottom_toBottomOf="@+id/button_min_round"
-        app:layout_constraintEnd_toStartOf="@id/button_min_round"
-        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintBottom_toTopOf="@+id/textView_scoreA"
+        app:layout_constraintEnd_toStartOf="@+id/button_reset_score"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/button_min_round"
+        app:layout_constraintRight_toLeftOf="@+id/button_reset_score"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timer" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_min_round"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:text="-"
-        app:layout_constraintEnd_toStartOf="@+id/textView_round"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintLeft_toRightOf="@id/textView_title_A"
-        app:layout_constraintRight_toLeftOf="@id/textView_round"
-        app:layout_constraintStart_toEndOf="@+id/textView_title_A"
-        app:layout_constraintTop_toBottomOf="@+id/timer" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_round"
+        app:layout_constraintEnd_toStartOf="@+id/text_round"
+        app:layout_constraintRight_toLeftOf="@id/text_round"
+        app:layout_constraintTop_toBottomOf="@+id/textView_round" />
 
     <TextView
         android:id="@+id/textView_round"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="1"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/textView_title_B"
-        app:layout_constraintEnd_toStartOf="@+id/button_add_round"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintLeft_toRightOf="@id/button_min_round"
-        app:layout_constraintRight_toLeftOf="@id/button_add_round"
-        app:layout_constraintStart_toEndOf="@+id/button_min_round"
-        app:layout_constraintTop_toBottomOf="@+id/timer" />
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_round" />
 
     <TextView
+        android:id="@+id/text_round"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/round"
         android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_round" />
+        app:layout_constraintTop_toBottomOf="@+id/timer"
+        app:layout_constraintVertical_bias="0.20" />
 
     <Button
         android:id="@+id/button_add_round"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:text="+"
-        app:layout_constraintEnd_toStartOf="@+id/textView_title_B"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintLeft_toRightOf="@id/textView_round"
-        app:layout_constraintRight_toLeftOf="@id/textView_title_B"
-        app:layout_constraintStart_toEndOf="@id/textView_round"
-        app:layout_constraintTop_toBottomOf="@+id/timer" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_round"
+        app:layout_constraintLeft_toRightOf="@id/text_round"
+        app:layout_constraintStart_toEndOf="@+id/text_round"
+        app:layout_constraintTop_toBottomOf="@+id/textView_round" />
 
     <TextView
         android:id="@+id/textView_title_B"
         style="@style/team_title"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:clickable="true"
         android:text="Team B"
         android:textColor="@color/teamB"
-        app:layout_constraintBottom_toBottomOf="@+id/button_add_round"
+        app:layout_constraintBottom_toTopOf="@+id/textView_scoreB"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintLeft_toRightOf="@id/button_add_round"
+        app:layout_constraintLeft_toRightOf="@+id/button_reset_score"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@id/button_add_round"
-        app:layout_constraintTop_toBottomOf="@+id/timer" />
+        app:layout_constraintStart_toEndOf="@+id/button_reset_score"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_scoreA"
