@@ -107,7 +107,7 @@
         app:layout_constraintStart_toEndOf="@id/button_add_round"
         app:layout_constraintTop_toBottomOf="@+id/timer" />
 
-    <Button
+    <TextView
         android:id="@+id/textView_scoreA"
         style="@style/score"
         android:background="@color/teamA"
@@ -119,7 +119,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <TextView
         android:id="@+id/textView_scoreB"
         style="@style/score"
         android:background="@color/teamB"
@@ -135,7 +135,7 @@
         android:id="@+id/button_reset_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="reset"
+        android:text="@string/reset"
         android:textAllCaps="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,4 +143,52 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/timer" />
+
+    <Button
+        android:id="@+id/button_min_score_teamA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/button_add_score_teamA"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="@+id/textView_scoreA"
+        app:layout_constraintRight_toLeftOf="@+id/button_add_score_teamA"
+        app:layout_constraintStart_toStartOf="@+id/textView_scoreA"
+        app:layout_constraintTop_toBottomOf="@+id/textView_scoreA" />
+
+    <Button
+        android:id="@+id/button_add_score_teamA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="@+id/textView_scoreA"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@+id/button_min_score_teamA"
+        app:layout_constraintRight_toRightOf="@+id/textView_scoreA"
+        app:layout_constraintStart_toEndOf="@+id/button_min_score_teamA"
+        app:layout_constraintTop_toBottomOf="@+id/textView_scoreA" />
+
+    <Button
+        android:id="@+id/button_min_score_teamB"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="-"
+        app:layout_constraintEnd_toStartOf="@+id/button_add_score_teamB"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="@+id/textView_scoreB"
+        app:layout_constraintRight_toLeftOf="@+id/button_add_score_teamB"
+        app:layout_constraintStart_toStartOf="@+id/textView_scoreB"
+        app:layout_constraintTop_toBottomOf="@+id/textView_scoreB" />
+
+    <Button
+        android:id="@+id/button_add_score_teamB"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="@+id/textView_scoreB"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@+id/button_min_score_teamB"
+        app:layout_constraintRight_toRightOf="@+id/textView_scoreB"
+        app:layout_constraintStart_toEndOf="@+id/button_min_score_teamB"
+        app:layout_constraintTop_toBottomOf="@+id/textView_scoreB" />
 </androidx.constraintlayout.widget.ConstraintLayout>
