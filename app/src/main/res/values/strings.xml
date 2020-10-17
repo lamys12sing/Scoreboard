@@ -2,4 +2,7 @@
     <string name="app_name">Scoreboard</string>
     <string name="round">Round</string>
     <string name="reset">reset</string>
+    <string name="input_team_name">Please enter a new Team name.</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 </resources>

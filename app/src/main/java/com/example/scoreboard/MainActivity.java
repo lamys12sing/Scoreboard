@@ -1,11 +1,14 @@
 package com.example.scoreboard;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.scoreboard.Module.Round;
@@ -14,7 +17,9 @@ import com.example.scoreboard.Module.Team;
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.this.getClass().getSimpleName();
 
+    private TextView textView_title_A;
     private TextView textView_scoreA;
+    private TextView textView_title_B;
     private TextView textView_scoreB;
     private TextView textView_round;
     private Button button_min_score_teamA;
@@ -51,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getViews(){
+        textView_title_A = findViewById(R.id.textView_title_A);
         textView_scoreA = findViewById(R.id.textView_scoreA);
+        textView_title_B = findViewById(R.id.textView_title_B);
         textView_scoreB = findViewById(R.id.textView_scoreB);
         textView_round = findViewById(R.id.textView_round);
 
@@ -65,9 +72,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setListenerForViews(){
+        textView_title_A.setOnClickListener(teamAListener);
         button_min_score_teamA.setOnClickListener(teamAListener);
         button_add_score_teamA.setOnClickListener(teamAListener);
 
+        textView_title_B.setOnClickListener(teamBListener);
         button_min_score_teamB.setOnClickListener(teamBListener);
         button_add_score_teamB.setOnClickListener(teamBListener);
 
@@ -79,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
+                case R.id.textView_title_A:
+                    showChangeTeamNameDialog(textView_title_A);
+                    break;
+
                 case R.id.button_min_score_teamA:
                     teamA.decreaseScore();
                     teamA.displayScore(textView_scoreA);
@@ -99,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
+                case R.id.textView_title_B:
+                    showChangeTeamNameDialog(textView_title_B);
+                    break;
+
                 case R.id.button_min_score_teamB:
                     teamB.decreaseScore();
                     teamB.displayScore(textView_scoreB);
@@ -114,6 +131,37 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    private void showChangeTeamNameDialog(final TextView name){
+        final EditText editText_for_alertDialog = new EditText(this);
+        final String teamName = name.getText().toString();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(editText_for_alertDialog)
+                .setMessage(R.string.input_team_name)
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String customName = editText_for_alertDialog.getText().toString();
+
+                        if (customName.equals("")){
+                            name.setText(teamName);
+                        }
+                        else {
+                            name.setText(customName);
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
     private Button.OnClickListener roundListener = new Button.OnClickListener(){
         @Override
