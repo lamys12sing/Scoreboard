@@ -19,20 +19,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/button_reset_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/reset_time"
+        android:textAllCaps="true"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@+id/timer"
+        app:layout_constraintStart_toEndOf="@+id/timer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timer" />
+
     <TextView
         android:id="@+id/textView_title_A"
         style="@style/team_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:text="Team A"
         android:textColor="@color/teamA"
         app:layout_constraintBottom_toTopOf="@+id/textView_scoreA"
-        app:layout_constraintEnd_toStartOf="@+id/button_reset_score"
+        app:layout_constraintEnd_toStartOf="@+id/textView_title_B"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/button_reset_score"
+        app:layout_constraintRight_toLeftOf="@+id/textView_title_B"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/timer" />
 
     <Button
         android:id="@+id/button_min_round"
@@ -41,8 +67,7 @@
         android:text="-"
         app:layout_constraintBaseline_toBaselineOf="@+id/text_round"
         app:layout_constraintEnd_toStartOf="@+id/text_round"
-        app:layout_constraintRight_toLeftOf="@id/text_round"
-        app:layout_constraintTop_toBottomOf="@+id/textView_round" />
+        app:layout_constraintRight_toLeftOf="@id/text_round" />
 
     <TextView
         android:id="@+id/textView_round"
@@ -70,7 +95,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timer"
-        app:layout_constraintVertical_bias="0.20" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <Button
         android:id="@+id/button_add_round"
@@ -79,23 +104,23 @@
         android:text="+"
         app:layout_constraintBaseline_toBaselineOf="@+id/text_round"
         app:layout_constraintLeft_toRightOf="@id/text_round"
-        app:layout_constraintStart_toEndOf="@+id/text_round"
-        app:layout_constraintTop_toBottomOf="@+id/textView_round" />
+        app:layout_constraintStart_toEndOf="@+id/text_round" />
 
     <TextView
         android:id="@+id/textView_title_B"
         style="@style/team_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:text="Team B"
         android:textColor="@color/teamB"
         app:layout_constraintBottom_toTopOf="@+id/textView_scoreB"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/button_reset_score"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@+id/textView_title_A"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_reset_score"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textView_title_A"
+        app:layout_constraintTop_toBottomOf="@+id/timer" />
 
     <TextView
         android:id="@+id/textView_scoreA"

@@ -11,6 +11,8 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:lines">2</item>
+        <item name="android:layout_marginTop">8dp</item>
     </style>
 
     <style name="score">

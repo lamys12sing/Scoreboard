@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.scoreboard.Module.Round;
@@ -29,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private Button button_reset_score;
     private Button button_min_round;
     private Button button_add_round;
+    private Button button_timer;
+    private Button button_reset_time;
+    private Chronometer timer;
+
+    private boolean timerIsRunning;
+    private long timeDifferent; //Stroe the time different between start and pause time of the timer.
 
     private Team teamA = new Team();
     private Team teamB = new Team();
@@ -69,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
         button_reset_score = findViewById(R.id.button_reset_score);
         button_min_round = findViewById(R.id.button_min_round);
         button_add_round = findViewById(R.id.button_add_round);
+        button_timer = findViewById(R.id.button_timer);
+        button_reset_time = findViewById(R.id.button_reset_time);
+
+        timer = findViewById(R.id.timer);
     }
 
     private void setListenerForViews(){
@@ -82,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
 
         button_min_round.setOnClickListener(roundListener);
         button_add_round.setOnClickListener(roundListener);
+
+        button_timer.setOnClickListener(timerListener);
+
+        button_reset_time.setOnClickListener(resetTimeListener);
     }
 
     private Button.OnClickListener teamAListener = new Button.OnClickListener(){
@@ -182,4 +199,47 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    private Button.OnClickListener timerListener = new Button.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            if (!timerIsRunning){
+                button_timer.setText(R.string.stop);
+                button_reset_time.setVisibility(View.GONE);
+                startTimer();
+                timerIsRunning = true;
+            } else {
+                button_timer.setText(R.string.start);
+                button_reset_time.setVisibility(View.VISIBLE);
+                pauseTimer();
+                timerIsRunning = false;
+            }
+        }
+    };
+
+    private void startTimer(){
+        if (!timerIsRunning){
+            timer.setBase(SystemClock.elapsedRealtime() - timeDifferent);
+            timer.start();
+        }
+    }
+
+    private void pauseTimer(){
+        if (timerIsRunning){
+            timer.stop();
+            timeDifferent = SystemClock.elapsedRealtime() - timer.getBase();
+        }
+    }
+
+    private Button.OnClickListener resetTimeListener = new Button.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            resetTimer();
+        }
+    };
+
+    private void resetTimer(){
+        timer.setBase(SystemClock.elapsedRealtime());
+        timeDifferent = 0;
+    }
 }
