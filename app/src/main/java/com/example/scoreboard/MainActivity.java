@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.scoreboard.Module.Round;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Chronometer timer;
 
     private boolean timerIsRunning;
-    private long timeDifferent; //Stroe the time different between start and pause time of the timer.
+    private long timeDifferent; //Store the time different between start and pause time of the timer.
 
     private Team teamA = new Team();
     private Team teamB = new Team();
@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         button_min_score_teamB.setOnClickListener(teamBListener);
         button_add_score_teamB.setOnClickListener(teamBListener);
 
+        textView_round.setOnClickListener(roundListener);
         button_min_round.setOnClickListener(roundListener);
         button_add_round.setOnClickListener(roundListener);
 
@@ -149,9 +150,8 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void showChangeTeamNameDialog(final TextView name){
+    private void showChangeTeamNameDialog(final TextView nameText){
         final EditText editText_for_alertDialog = new EditText(this);
-        final String teamName = name.getText().toString();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(editText_for_alertDialog)
@@ -162,10 +162,10 @@ public class MainActivity extends AppCompatActivity {
                         String customName = editText_for_alertDialog.getText().toString();
 
                         if (customName.equals("")){
-                            name.setText(teamName);
+                            dialog.dismiss();
                         }
                         else {
-                            name.setText(customName);
+                            nameText.setText(customName);
                         }
                     }
                 })
@@ -184,6 +184,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
+                case R.id.textView_round:
+                    showChangeRoundDialog(textView_round);
+                    break;
+
                 case R.id.button_min_round:
                     round.decreaseRound();
                     round.displayRound(textView_round);
@@ -199,6 +203,37 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    private void showChangeRoundDialog(final TextView roundText){
+        final EditText editText_for_alertDialog = new EditText(this);
+        editText_for_alertDialog.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(editText_for_alertDialog)
+                .setMessage(R.string.enter_round)
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String customRound = editText_for_alertDialog.getText().toString();
+
+                        if (customRound.equals("")){
+                            dialog.dismiss();
+                        } else {
+                            round.setRound(Integer.parseInt(customRound));
+                            roundText.setText(String.valueOf(round.getRound()));
+                        }
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
     private Button.OnClickListener timerListener = new Button.OnClickListener(){
         @Override

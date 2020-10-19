@@ -20,4 +20,12 @@ public class Round {
     public void displayRound(TextView viewForDisplay){
         viewForDisplay.setText(String.valueOf(mRound));
     }
+
+    public void setRound(int round){
+        mRound = round;
+    }
+
+    public int getRound(){
+        return mRound;
+    }
 }
