@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MotionScene 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:motion="http://schemas.android.com/apk/res-auto">
+    xmlns:motion="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="1000">
+        motion:duration="500">
        <KeyFrameSet>
        </KeyFrameSet>
         <OnClick motion:targetId="@+id/imageView_swap" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@id/button_reset_time">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore" />
+        </Constraint>
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@+id/button_reset_time">
+            <PropertySet
+                app:applyMotionScene="false"
+                app:visibilityMode="ignore"/>
+        </Constraint>
         <Constraint
             android:id="@+id/textView_title_A"
             style="@style/team_title"
