@@ -18,6 +18,11 @@ import android.widget.TextView;
 
 import com.example.scoreboard.Module.Round;
 import com.example.scoreboard.Module.Team;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.this.getClass().getSimpleName();
@@ -36,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private Button button_add_round;
     private Button button_timer;
     private Button button_reset_time;
-    private ImageView imageView_swap;
+    private ImageView imageView_exchange;
     private Chronometer timer;
+
 
     private boolean timerIsRunning;
     private long timeDifferent; //Store the time different between start and pause time of the timer.
@@ -50,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+
 
         getViews();
         setListenerForViews();
@@ -84,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         button_timer = findViewById(R.id.button_timer);
         button_reset_time = findViewById(R.id.button_reset_time);
 
-        imageView_swap = findViewById(R.id.imageView_swap);
+        imageView_exchange = findViewById(R.id.imageView_exchange);
 
         timer = findViewById(R.id.timer);
     }
@@ -106,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         button_reset_time.setOnClickListener(resetTimeListener);
 
-        imageView_swap.setOnClickListener(swapViewListener);
+        imageView_exchange.setOnClickListener(swapViewListener);
     }
 
     private Button.OnClickListener teamAListener = new Button.OnClickListener(){
@@ -283,6 +297,7 @@ public class MainActivity extends AppCompatActivity {
     private void resetTimer(){
         timer.setBase(SystemClock.elapsedRealtime());
         timeDifferent = 0;
+        button_reset_time.setVisibility(View.GONE);
     }
 
     private ImageView.OnClickListener swapViewListener = new ImageView.OnClickListener(){

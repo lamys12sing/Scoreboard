@@ -56,10 +56,10 @@
         android:text="Team A"
         android:textColor="@color/teamA"
         app:layout_constraintBottom_toTopOf="@+id/textView_scoreA"
-        app:layout_constraintEnd_toStartOf="@+id/textView_vs"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_exchange"
         app:layout_constraintHorizontal_weight="2"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/textView_vs"
+        app:layout_constraintRight_toLeftOf="@+id/imageView_exchange"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timer" />
 
@@ -72,15 +72,14 @@
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@id/textView_title_A"
-        app:layout_constraintBottom_toTopOf="@+id/textView_scoreA"
-        app:layout_constraintEnd_toStartOf="@+id/textView_title_B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textView_scoreB"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintLeft_toRightOf="@id/textView_title_A"
-        app:layout_constraintRight_toLeftOf="@+id/textView_title_B"
-        app:layout_constraintStart_toEndOf="@+id/textView_title_A"
-        app:layout_constraintTop_toBottomOf="@+id/timer"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintLeft_toRightOf="@+id/textView_scoreA"
+        app:layout_constraintRight_toLeftOf="@+id/textView_scoreB"
+        app:layout_constraintStart_toEndOf="@+id/textView_scoreA"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6" />
 
     <Button
         android:id="@+id/button_min_round"
@@ -143,9 +142,9 @@
         app:layout_constraintBottom_toTopOf="@+id/textView_scoreB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintLeft_toRightOf="@+id/textView_vs"
+        app:layout_constraintLeft_toRightOf="@+id/imageView_exchange"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView_vs"
+        app:layout_constraintStart_toEndOf="@+id/imageView_exchange"
         app:layout_constraintTop_toBottomOf="@+id/timer" />
 
     <TextView
@@ -154,26 +153,26 @@
         android:background="@color/teamA"
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView_swap"
+        app:layout_constraintEnd_toStartOf="@+id/textView_vs"
         app:layout_constraintHorizontal_weight="2"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/imageView_swap"
+        app:layout_constraintRight_toLeftOf="@+id/textView_vs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView_swap"
+        android:id="@+id/imageView_exchange"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:src="@drawable/swap"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textView_scoreB"
+        app:layout_constraintBottom_toTopOf="@+id/textView_scoreA"
+        app:layout_constraintEnd_toStartOf="@+id/textView_title_B"
         app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintLeft_toRightOf="@+id/textView_scoreA"
-        app:layout_constraintRight_toLeftOf="@+id/textView_scoreB"
-        app:layout_constraintStart_toEndOf="@+id/textView_scoreA"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintLeft_toRightOf="@id/textView_title_A"
+        app:layout_constraintRight_toLeftOf="@+id/textView_title_B"
+        app:layout_constraintStart_toEndOf="@+id/textView_title_A"
+        app:layout_constraintTop_toBottomOf="@+id/button_timer"
+        app:layout_constraintVertical_bias="0.04" />
 
     <TextView
         android:id="@+id/textView_scoreB"
@@ -183,9 +182,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintLeft_toRightOf="@id/imageView_swap"
+        app:layout_constraintLeft_toRightOf="@id/textView_vs"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView_swap"
+        app:layout_constraintStart_toEndOf="@+id/textView_vs"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button

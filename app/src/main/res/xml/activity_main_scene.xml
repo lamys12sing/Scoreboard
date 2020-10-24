@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene 
+<MotionScene
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -8,9 +8,9 @@
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
         motion:duration="500">
-       <KeyFrameSet>
-       </KeyFrameSet>
-        <OnClick motion:targetId="@+id/imageView_swap" />
+        <KeyFrameSet>
+        </KeyFrameSet>
+        <OnClick motion:targetId="@+id/imageView_exchange" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
@@ -19,7 +19,6 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
-
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -28,36 +27,74 @@
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore"/>
         </Constraint>
-        <Constraint
-            android:id="@+id/textView_title_A"
-            style="@style/team_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:text="Team A"
-            android:textColor="@color/teamA"
-            motion:layout_constraintBottom_toTopOf="@+id/textView_scoreB"
-            motion:layout_constraintStart_toEndOf="@+id/textView_vs"
-            motion:layout_constraintHorizontal_weight="2"
-            motion:layout_constraintRight_toRightOf="parent"
-            motion:layout_constraintLeft_toRightOf="@+id/textView_vs"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/timer" />
+
         <Constraint
             android:id="@+id/textView_title_B"
             style="@style/team_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:text="Team A"
+            android:textColor="@color/teamA"
+            motion:layout_constraintBottom_toTopOf="@+id/textView_scoreA"
+            motion:layout_constraintEnd_toStartOf="@+id/imageView_exchange"
+            motion:layout_constraintHorizontal_weight="2"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            motion:layout_constraintRight_toLeftOf="@+id/imageView_exchange"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/timer" />
+        <Constraint
+            android:id="@+id/textView_title_A"
+            style="@style/team_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
             android:text="Team B"
             android:textColor="@color/teamB"
-            motion:layout_constraintBottom_toTopOf="@+id/textView_scoreA"
-            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toTopOf="@+id/textView_scoreB"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintHorizontal_weight="2"
-            motion:layout_constraintRight_toLeftOf="@+id/textView_vs"
-            motion:layout_constraintLeft_toLeftOf="parent"
+            motionlayout_constraintLeft_toRightOf="@+id/imageView_exchange"
+            motion:layout_constraintRight_toRightOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/imageView_exchange"
+            motion:layout_constraintTop_toBottomOf="@+id/timer"/>
+        <Constraint
+            android:id="@+id/imageView_exchange"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:src="@drawable/swap"
+            motion:layout_constraintBottom_toTopOf="@+id/textView_scoreA"
+            motion:layout_constraintEnd_toStartOf="@+id/textView_title_A"
+            motion:layout_constraintHorizontal_weight="1"
+            motion:layout_constraintLeft_toRightOf="@id/textView_title_B"
+            motion:layout_constraintRight_toLeftOf="@+id/textView_title_A"
+            motion:layout_constraintStart_toEndOf="@+id/textView_title_B"
+            motion:layout_constraintTop_toBottomOf="@+id/button_timer"
+            motion:layout_constraintVertical_bias="0.04"/>
+        <Constraint
+            android:id="@+id/textView_scoreB"
+            style="@style/score"
+            android:background="@color/teamA"
+            android:text="0"
+            motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@+id/textView_vs"
-            motion:layout_constraintTop_toBottomOf="@+id/timer" />
+            motion:layout_constraintHorizontal_weight="2"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            motion:layout_constraintRight_toLeftOf="@+id/textView_vs"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"/>
+        <Constraint
+            android:id="@+id/textView_scoreA"
+            style="@style/score"
+            android:background="@color/teamB"
+            android:text="0"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_weight="2"
+            motion:layout_constraintLeft_toRightOf="@id/textView_vs"
+            motion:layout_constraintRight_toRightOf="parent"
+            motion:layout_constraintStart_toEndOf="@+id/textView_vs"
+            motion:layout_constraintTop_toTopOf="parent"/>
         <Constraint
             android:id="@+id/textView_vs"
             android:layout_width="0dp"
@@ -67,44 +104,6 @@
             android:textColor="@android:color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            motion:layout_constraintBaseline_toBaselineOf="@id/textView_title_A"
-            motion:layout_constraintBottom_toTopOf="@+id/textView_scoreA"
-            motion:layout_constraintEnd_toStartOf="@+id/textView_title_A"
-            motion:layout_constraintHorizontal_weight="1"
-            motion:layout_constraintLeft_toRightOf="@id/textView_title_B"
-            motion:layout_constraintRight_toLeftOf="@+id/textView_title_A"
-            motion:layout_constraintStart_toEndOf="@+id/textView_title_B"
-            motion:layout_constraintTop_toBottomOf="@+id/timer"
-            motion:layout_constraintVertical_bias="0.2"  />
-        <Constraint
-            android:id="@+id/textView_scoreA"
-            style="@style/score"
-            android:background="@color/teamA"
-            android:text="0"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toEndOf="@+id/imageView_swap"
-            motion:layout_constraintHorizontal_weight="2"
-            motion:layout_constraintRight_toRightOf="parent"
-            motion:layout_constraintLeft_toRightOf="@+id/imageView_swap"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"/>
-        <Constraint
-            android:id="@+id/textView_scoreB"
-            style="@style/score"
-            android:background="@color/teamB"
-            android:text="0"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintHorizontal_weight="2"
-            motion:layout_constraintRight_toLeftOf="@id/imageView_swap"
-            motion:layout_constraintLeft_toLeftOf="parent"
-            motion:layout_constraintEnd_toStartOf="@+id/imageView_swap"
-            motion:layout_constraintTop_toTopOf="parent"/>
-        <Constraint
-            android:id="@+id/imageView_swap"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:src="@drawable/swap"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/textView_scoreA"
             motion:layout_constraintHorizontal_weight="1"
