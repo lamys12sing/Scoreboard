@@ -7,6 +7,6 @@
     <string name="cancel">Cancel</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
-    <string name="reset_time">Reset Time</string>
     <string name="enter_round">Reset Round</string>
+    <string name="reset_time">Reset\nTime</string>
 </resources>

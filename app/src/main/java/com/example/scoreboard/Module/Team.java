@@ -24,4 +24,12 @@ public class Team {
     public void displayScore(TextView viewForDisplay){
         viewForDisplay.setText(String.valueOf(mScore));
     }
+
+    public void setmScore(int score){
+        mScore = score;
+    }
+
+    public int getmScore(){
+        return mScore;
+    }
 }

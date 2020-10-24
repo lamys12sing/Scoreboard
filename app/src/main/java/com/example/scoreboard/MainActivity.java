@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.InputType;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.scoreboard.Module.Round;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button_add_round;
     private Button button_timer;
     private Button button_reset_time;
+    private ImageView imageView_swap;
     private Chronometer timer;
 
     private boolean timerIsRunning;
@@ -81,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         button_timer = findViewById(R.id.button_timer);
         button_reset_time = findViewById(R.id.button_reset_time);
 
+        imageView_swap = findViewById(R.id.imageView_swap);
+
         timer = findViewById(R.id.timer);
     }
 
@@ -100,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         button_timer.setOnClickListener(timerListener);
 
         button_reset_time.setOnClickListener(resetTimeListener);
+
+        imageView_swap.setOnClickListener(swapViewListener);
     }
 
     private Button.OnClickListener teamAListener = new Button.OnClickListener(){
@@ -276,5 +283,41 @@ public class MainActivity extends AppCompatActivity {
     private void resetTimer(){
         timer.setBase(SystemClock.elapsedRealtime());
         timeDifferent = 0;
+    }
+
+    private ImageView.OnClickListener swapViewListener = new ImageView.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            exchangeTeamScore();
+            exchangeTeamTitle();
+        }
+    };
+
+    private void exchangeTeamScore(){
+        //Exchange the background between 2 TextView for displaying score
+        Drawable temp = textView_scoreA.getBackground();
+        textView_scoreA.setBackground(textView_scoreB.getBackground());
+        textView_scoreB.setBackground(temp);
+
+        //Exchange the score between 2 teams
+        int tempScore = teamA.getmScore();
+        teamA.setmScore(teamB.getmScore());
+        teamB.setmScore(tempScore);
+
+        //Display the score
+        teamA.displayScore(textView_scoreA);
+        teamB.displayScore(textView_scoreB);
+    }
+
+    private void exchangeTeamTitle(){
+        //Exchange the name of 2 teams
+        CharSequence tempName = textView_title_A.getText();
+        textView_title_A.setText(textView_title_B.getText());
+        textView_title_B.setText(tempName);
+
+        //Exchange the name's color of 2 teams
+        int tempTextColor = textView_title_A.getCurrentTextColor();
+        textView_title_A.setTextColor(textView_title_B.getCurrentTextColor());
+        textView_title_B.setTextColor(tempTextColor);
     }
 }
